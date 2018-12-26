@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     
     private func generateLayer(pos: Int, count: Int) -> CAShapeLayer {
         let size = view.layer.bounds.size
-        let rect = CGRect(x: 0, y: 0, width: 25, height: 25)
+        let rect = CGRect(x: 0, y: 0, width: 50, height: 50)
         let path = UIBezierPath(ovalIn: rect)
         
         let layer = CAShapeLayer()
@@ -54,8 +54,15 @@ class ViewController: UIViewController {
         let dCount = Double(count)
         let dPos = Double(pos)
         
+        print("POS \(pos)")
+        
         let seno = (sin(((360 * dPos)/dCount) * Double.pi / 180) + 1) / 2
         let cosseno = (cos(((360 * dPos)/dCount) * Double.pi / 180) + 1) / 2
+        
+        print("cos \(seno)")
+        print("sen \(cosseno)")
+        
+        print("anchorPoint \(CGPoint(x: 1 - cosseno, y: seno))")
         
         layer.anchorPoint = CGPoint(x: 1 - cosseno, y: seno)
         
@@ -82,8 +89,12 @@ class ViewController: UIViewController {
         scaleAnimation.toValue = 4
         scaleAnimation.duration = 3
         
+        let anchorPointAnimation = CABasicAnimation(keyPath: "anchorPoint")
+        anchorPointAnimation.toValue = [0.5, 0.5]
+        anchorPointAnimation.duration = 3
+        
         let animationSet = CAAnimationGroup()
-        animationSet.animations = [rotationAnimation, scaleAnimation]
+        animationSet.animations = [rotationAnimation, scaleAnimation, anchorPointAnimation]
         animationSet.duration = 3
         animationSet.repeatCount = 1
         animationSet.fillMode = CAMediaTimingFillMode.forwards
