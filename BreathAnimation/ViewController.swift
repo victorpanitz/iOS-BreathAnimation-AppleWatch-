@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController {
     
     lazy var layers = [CAShapeLayer]()
@@ -19,7 +17,8 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .black
         
-        layers = generateLayers(numberOfLayers: 5)
+        layers = generateLayers(numberOfLayers: 6)
+        
         animateLayers()
     }
     
@@ -31,11 +30,11 @@ class ViewController: UIViewController {
     
     private func generateLayers(numberOfLayers: Int) -> [CAShapeLayer] {
         var array = [CAShapeLayer]()
-        for _ in 0..<numberOfLayers { array.append(generateLayer()) }
+        for i in 0..<numberOfLayers { array.append(generateLayer(pos: i+1, count: numberOfLayers)) }
         return array
     }
     
-    private func generateLayer() -> CAShapeLayer {
+    private func generateLayer(pos: Int, count: Int) -> CAShapeLayer {
         let size = view.layer.bounds.size
         let rect = CGRect(x: 0, y: 0, width: 25, height: 25)
         let path = UIBezierPath(ovalIn: rect)
@@ -51,7 +50,14 @@ class ViewController: UIViewController {
             x: size.width/2,
             y: size.height/2
         )
-        layer.anchorPoint = CGPoint(x: 0.5, y: 1)
+        
+        let dCount = Double(count)
+        let dPos = Double(pos)
+        
+        let seno = (sin(((360 * dPos)/dCount) * Double.pi / 180) + 1) / 2
+        let cosseno = (cos(((360 * dPos)/dCount) * Double.pi / 180) + 1) / 2
+        
+        layer.anchorPoint = CGPoint(x: 1 - cosseno, y: seno)
         
         return layer
     }
@@ -66,8 +72,10 @@ class ViewController: UIViewController {
     }
     
     private func expandedAnimation(factor: Int) -> CAAnimationGroup {
+        let rotationFactor = (2*CGFloat.pi/360) * CGFloat(factor)
+        
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = 2*CGFloat.pi - ((2*CGFloat.pi/5) * CGFloat(factor))
+        rotationAnimation.toValue = 6/CGFloat.pi - rotationFactor
         rotationAnimation.duration = 3
         
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
@@ -77,7 +85,7 @@ class ViewController: UIViewController {
         let animationSet = CAAnimationGroup()
         animationSet.animations = [rotationAnimation, scaleAnimation]
         animationSet.duration = 3
-        animationSet.repeatCount = 4
+        animationSet.repeatCount = 1
         animationSet.fillMode = CAMediaTimingFillMode.forwards
         animationSet.isRemovedOnCompletion = false
         animationSet.autoreverses = true
