@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		719CA69721D36E07001D94DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CA69621D36E07001D94DA /* AppDelegate.swift */; };
-		719CA69921D36E07001D94DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CA69821D36E07001D94DA /* ViewController.swift */; };
-		719CA69C21D36E07001D94DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719CA69A21D36E07001D94DA /* Main.storyboard */; };
+		719CA69921D36E07001D94DA /* BreathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CA69821D36E07001D94DA /* BreathViewController.swift */; };
 		719CA69E21D36E08001D94DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 719CA69D21D36E08001D94DA /* Assets.xcassets */; };
 		719CA6A121D36E08001D94DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 719CA69F21D36E08001D94DA /* LaunchScreen.storyboard */; };
+		719CA6AC21D45C47001D94DA /* BreathAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CA6AB21D45C47001D94DA /* BreathAnimator.swift */; };
+		719CA6AE21D45C73001D94DA /* BreathLayerGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719CA6AD21D45C73001D94DA /* BreathLayerGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		719CA69321D36E07001D94DA /* BreathAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreathAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		719CA69621D36E07001D94DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		719CA69821D36E07001D94DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		719CA69B21D36E07001D94DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		719CA69821D36E07001D94DA /* BreathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathViewController.swift; sourceTree = "<group>"; };
 		719CA69D21D36E08001D94DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		719CA6A021D36E08001D94DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		719CA6A221D36E08001D94DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		719CA6AB21D45C47001D94DA /* BreathAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathAnimator.swift; sourceTree = "<group>"; };
+		719CA6AD21D45C73001D94DA /* BreathLayerGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathLayerGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		719CA69521D36E07001D94DA /* BreathAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				719CA69621D36E07001D94DA /* AppDelegate.swift */,
-				719CA69821D36E07001D94DA /* ViewController.swift */,
-				719CA69A21D36E07001D94DA /* Main.storyboard */,
+				719CA6AA21D45C25001D94DA /* Application */,
+				719CA69821D36E07001D94DA /* BreathViewController.swift */,
+				719CA6AB21D45C47001D94DA /* BreathAnimator.swift */,
+				719CA6AD21D45C73001D94DA /* BreathLayerGenerator.swift */,
+			);
+			path = BreathAnimation;
+			sourceTree = "<group>";
+		};
+		719CA6AA21D45C25001D94DA /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				719CA69D21D36E08001D94DA /* Assets.xcassets */,
 				719CA69F21D36E08001D94DA /* LaunchScreen.storyboard */,
 				719CA6A221D36E08001D94DA /* Info.plist */,
+				719CA69621D36E07001D94DA /* AppDelegate.swift */,
 			);
-			path = BreathAnimation;
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +135,6 @@
 			files = (
 				719CA6A121D36E08001D94DA /* LaunchScreen.storyboard in Resources */,
 				719CA69E21D36E08001D94DA /* Assets.xcassets in Resources */,
-				719CA69C21D36E07001D94DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +145,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				719CA69921D36E07001D94DA /* ViewController.swift in Sources */,
+				719CA69921D36E07001D94DA /* BreathViewController.swift in Sources */,
 				719CA69721D36E07001D94DA /* AppDelegate.swift in Sources */,
+				719CA6AC21D45C47001D94DA /* BreathAnimator.swift in Sources */,
+				719CA6AE21D45C73001D94DA /* BreathLayerGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		719CA69A21D36E07001D94DA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				719CA69B21D36E07001D94DA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		719CA69F21D36E08001D94DA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,13 +287,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BreathAnimation/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BreathAnimation/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iOSCookBookChannel.BreathAnimation;
+				PRODUCT_BUNDLE_IDENTIFIER = VictorMagalhaes.BreathAnimation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -301,13 +305,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BreathAnimation/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BreathAnimation/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iOSCookBookChannel.BreathAnimation;
+				PRODUCT_BUNDLE_IDENTIFIER = VictorMagalhaes.BreathAnimation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
