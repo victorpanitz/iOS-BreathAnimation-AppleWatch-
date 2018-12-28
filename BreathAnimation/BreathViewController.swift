@@ -1,18 +1,9 @@
-//
-//  ViewController.swift
-//  teste
-//
-//  Created by Victor Magalhaes on 26/12/18.
-//  Copyright © 2018 iOSCookBookChannel. All rights reserved.
-//
-
 import UIKit
 
-class BreathViewController: UIViewController {
+final class BreathViewController: UIViewController {
     
     var generator: BreathLayerGenerator?
     var animator: BreathAnimator?
-    
     lazy var layers = [CAShapeLayer]()
     
     override func viewDidLoad() {
@@ -21,7 +12,7 @@ class BreathViewController: UIViewController {
         view.backgroundColor = .black
         
         generator = BreathLayerGenerator(center: view.center)
-        animator = BreathAnimator(duration: 2, repeatCount: 3, autoreverse: true)
+        animator = BreathAnimator(duration: 4, repeatCount: 3, autoreverse: true)
         
         setupBreath()
     }
@@ -33,3 +24,4 @@ class BreathViewController: UIViewController {
         animator?.animate(layers: layers)
     }
 }
+    

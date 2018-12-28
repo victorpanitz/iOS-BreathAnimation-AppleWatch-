@@ -22,17 +22,18 @@ final class BreathAnimator {
         let rotationFactor = (2*CGFloat.pi/360) * CGFloat(factor)
         let axis = generateAnchorPoint(spherePos: Double(factor), count: Double(count))
         
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = CGFloat(count)/CGFloat.pi - rotationFactor
-        rotationAnimation.duration = duration
-        
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scaleAnimation.toValue = 4
-        scaleAnimation.duration = duration
-        
         let anchorPointAnimation = CABasicAnimation(keyPath: "anchorPoint")
         anchorPointAnimation.toValue = [axis.x, axis.y]
         anchorPointAnimation.duration = duration
+        
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = 3*CGFloat.pi - rotationFactor
+        rotationAnimation.duration = duration
+        
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.toValue = 5
+        scaleAnimation.duration = duration
+        
         
         let animationSet = CAAnimationGroup()
         animationSet.animations = [rotationAnimation, scaleAnimation, anchorPointAnimation]
