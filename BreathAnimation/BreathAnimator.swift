@@ -22,26 +22,25 @@ final class BreathAnimator {
         let rotationFactor = (2*CGFloat.pi/360) * CGFloat(factor)
         let axis = generateAnchorPoint(spherePos: Double(factor), count: Double(count))
         
-        let anchorPointAnimation = CABasicAnimation(keyPath: "anchorPoint")
-        anchorPointAnimation.toValue = [axis.x, axis.y]
-        anchorPointAnimation.duration = duration
+        let anchoring = CABasicAnimation(keyPath: "anchorPoint")
+        anchoring.toValue = [axis.x, axis.y]
         
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = 3*CGFloat.pi - rotationFactor
-        rotationAnimation.duration = duration
+        let rotating = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotating.toValue = 3*CGFloat.pi - rotationFactor
         
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scaleAnimation.toValue = 5
-        scaleAnimation.duration = duration
-        
+        let scaling = CABasicAnimation(keyPath: "transform.scale")
+        scaling.toValue = 5
         
         let animationSet = CAAnimationGroup()
-        animationSet.animations = [rotationAnimation, scaleAnimation, anchorPointAnimation]
-        animationSet.duration = duration
         animationSet.repeatCount = repeatCount
         animationSet.fillMode = CAMediaTimingFillMode.forwards
         animationSet.isRemovedOnCompletion = false
         animationSet.autoreverses = autoreverse
+        animationSet.animations = [rotating, scaling, anchoring]
+        
+        [anchoring, rotating, scaling, animationSet].forEach{
+            $0.setTiming(with: duration)
+        }
         
         return animationSet
     }
@@ -50,5 +49,12 @@ final class BreathAnimator {
         let sen = (sin(((360 * spherePos)/count) * Double.pi / 180) + 1) / 2
         let coss = (cos(((360 * spherePos)/count) * Double.pi / 180) + 1) / 2
         return (x: coss, y: sen)
+    }
+}
+
+extension CAAnimation {
+    func setTiming(with duration: Double) {
+        self.duration = duration
+        self.timingFunction = CAMediaTimingFunction(name: .easeOut)
     }
 }
